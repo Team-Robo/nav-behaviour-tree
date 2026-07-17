@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hdas_msg</name>
+  <version>0.0.0</version>
+  <description>
+    Message/service definitions vendored from the Galaxea R1 HDAS firmware
+    (atc_standard-V2.0.4-20250516_21_53_33_aarch64_patch1/install/hdas_msg/share/hdas_msg).
+    Extracted as plain .msg/.srv source and rebuilt here rather than copying the firmware's
+    own compiled install artifacts, which are aarch64 binaries and won't run in this
+    workspace's (x86_64) container. Must be named exactly "hdas_msg" so the generated
+    message type (hdas_msg/msg/Imu) matches the real robot's type — galaxea_simulation's
+    imu_hdas_translator.py depends on this for /hdas/imu_chassis parity.
+  </description>
+  <maintainer email="root@todo.todo">root</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <depend>std_msgs</depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
