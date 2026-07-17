@@ -1,0 +1,28 @@
+services:
+  nav-bt:
+    build: .
+    container_name: nav-behaviour-tree
+    stdin_open: true
+    tty: true
+    network_mode: host
+    ipc: host
+    environment:
+      - DISPLAY=${DISPLAY}
+      - TURTLEBOT3_MODEL=burger
+      - ROS_DOMAIN_ID=0
+      # Uncomment the two lines below + the deploy block if you have an
+      # NVIDIA GPU + nvidia-container-toolkit installed. Without an NVIDIA
+      # GPU, leave these commented out and rviz2/rqt will fall back to
+      # software (llvmpipe) rendering.
+      # - NVIDIA_DRIVER_CAPABILITIES=all
+      # - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./ros2_ws/src:/ros2_ws/src
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu, utility]
